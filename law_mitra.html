@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Law Mitra - AI Legal Assistant</title>
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Merriweather:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
@@ -99,6 +103,7 @@
         .history-list::-webkit-scrollbar {
             width: 4px;
         }
+
         .history-list::-webkit-scrollbar-thumb {
             background: #ddd;
             border-radius: 2px;
@@ -307,13 +312,13 @@
             border-radius: 12px;
             padding: 25px;
             text-align: left;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.01);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.01);
             transition: transform 0.2s, box-shadow 0.2s;
         }
 
         .feature-card:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.05);
         }
 
         .f-icon {
@@ -327,8 +332,15 @@
             border-radius: 8px;
         }
 
-        .f-icon.blue { background: #EBF5FF; color: var(--secondary-blue); }
-        .f-icon.gold { background: #FFF8EB; color: var(--accent-gold); }
+        .f-icon.blue {
+            background: #EBF5FF;
+            color: var(--secondary-blue);
+        }
+
+        .f-icon.gold {
+            background: #FFF8EB;
+            color: var(--accent-gold);
+        }
 
         .feature-card h3 {
             color: var(--primary-blue);
@@ -349,7 +361,7 @@
             border-radius: 12px;
             padding: 30px;
             margin-bottom: 40px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
         }
 
         .try-asking-section h3 {
@@ -380,8 +392,15 @@
             font-family: var(--font-sans);
         }
 
-        .suggestion-btn i { color: var(--accent-gold); font-size: 1.1rem; }
-        .suggestion-btn:hover { border-color: var(--accent-gold); background: #FFFDF8; }
+        .suggestion-btn i {
+            color: var(--accent-gold);
+            font-size: 1.1rem;
+        }
+
+        .suggestion-btn:hover {
+            border-color: var(--accent-gold);
+            background: #FFFDF8;
+        }
 
         .start-chat-btn {
             background-color: var(--accent-gold);
@@ -398,20 +417,23 @@
             gap: 10px;
             font-family: var(--font-sans);
         }
-        
-        .start-chat-btn:hover { background-color: var(--accent-gold-hover); }
+
+        .start-chat-btn:hover {
+            background-color: var(--accent-gold-hover);
+        }
 
         .footer-links {
             font-size: 0.8rem;
             color: #aaa;
         }
 
-        /* CHAT INTERFACE STYLES */
+        /* CHAT INTERFACs STYLES */
         .chat-scroll-area {
             flex: 1;
             overflow-y: auto;
             padding: 30px 40px;
-            padding-bottom: 180px; /* Space for input area */
+            padding-bottom: 180px;
+            /* Space for input area */
             scroll-behavior: smooth;
         }
 
@@ -436,8 +458,17 @@
             overflow: hidden;
         }
 
-        .avatar img { width: 100%; height: 100%; object-fit: cover; }
-        .bot-avatar { background: #FFF8EB; border: 1px solid #eee; padding: 2px; }
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .bot-avatar {
+            background: #FFF8EB;
+            border: 1px solid #eee;
+            padding: 2px;
+        }
 
         .message-content-wrapper {
             flex: 1;
@@ -448,7 +479,7 @@
             padding: 24px;
             line-height: 1.7;
             font-size: 0.95rem;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
         }
 
         .bot-bubble {
@@ -468,6 +499,22 @@
         }
 
         /* Specific formatting for bot list */
+        .message-bubble ol,
+        .message-bubble ul {
+            margin: 10px 0 10px 25px;
+            padding: 0;
+        }
+
+        .message-bubble li {
+            margin-bottom: 8px;
+            padding-left: 5px;
+        }
+
+        .message-bubble strong {
+            font-weight: 700;
+            color: var(--secondary-blue);
+        }
+
         .styled-list {
             margin: 15px 0 15px 20px;
             padding: 0;
@@ -477,7 +524,7 @@
             margin-bottom: 12px;
             padding-left: 5px;
         }
-        
+
         .styled-list li strong {
             color: var(--secondary-blue);
         }
@@ -511,7 +558,7 @@
             cursor: pointer;
             transition: background 0.2s;
         }
-        
+
         .citation-card:hover {
             background-color: #e0efff;
         }
@@ -588,7 +635,7 @@
             padding: 8px 12px;
             display: flex;
             align-items: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
         }
 
         .attach-icon {
@@ -608,7 +655,7 @@
             font-family: var(--font-sans);
             color: var(--text-dark);
         }
-        
+
         .input-box input::placeholder {
             color: #bbb;
         }
@@ -641,13 +688,25 @@
 
         /* Responsive */
         @media (max-width: 900px) {
-            .sidebar { display: none; }
-            .features-grid { grid-template-columns: 1fr; }
-            .suggestions-grid { grid-template-columns: 1fr; }
-            .message-content-wrapper { max-width: 100%; }
+            .sidebar {
+                display: none;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .suggestions-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .message-content-wrapper {
+                max-width: 100%;
+            }
         }
     </style>
 </head>
+
 <body>
 
     <div class="app-container">
@@ -664,11 +723,12 @@
                     <!-- History items will be loaded here dynamically -->
                 </div>
             </div>
-            
+
             <div class="user-profile">
-                <img src="https://i.pravatar.cc/150?img=11" alt="User">
+                <img src="https://media.licdn.com/dms/image/v2/D4D03AQGVD_tNHMR1ng/profile-displayphoto-scale_400_400/B4DZsC7f8gIEAg-/0/1765280712523?e=1771459200&v=beta&t=i-i87PB2YErSvWq-T-yBVhSV4OuzVYw45wZS59RZrKs"
+                    alt="User">
                 <div class="user-info">
-                    <div class="user-name">Rajesh Kumar</div>
+                    <div class="user-name">Siddharth Barkund </div>
                     <div class="user-plan">Free Plan</div>
                 </div>
                 <i class="fa-solid fa-chevron-down"></i>
@@ -678,10 +738,11 @@
         <main class="main-content">
             <header class="top-bar">
                 <div class="logo-area">
-                    <div class="logo-icon">LM</div>
+                    <div class="logo-icon" onclick="window.location.reload()" style="cursor: pointer;"
+                        title="Reload Page">LM</div>
                     <span class="logo-text">Law Mitra</span>
-                    <span class="divider">|</span>
-                    <span class="page-title">Chat Interface</span>
+                    <span class="divider"></span>
+                    <span class="page-title"></span>
                 </div>
                 <div class="header-actions">
                     <i class="fa-regular fa-bell"></i>
@@ -695,7 +756,8 @@
                         <i class="fa-regular fa-file-lines"></i>
                     </div>
                     <h1>Welcome to Law Mitra</h1>
-                    <p class="subtitle">Your intelligent assistant for navigating Indian law. Get instant answers, legal guidance, and expert insights powered by AI.</p>
+                    <p class="subtitle">Your intelligent assistant for navigating Indian law. Get instant answers, legal
+                        guidance, and expert insights powered by AI.</p>
 
                     <div class="features-grid">
                         <div class="feature-card">
@@ -716,20 +778,25 @@
                     </div>
 
 
-                    <button class="start-chat-btn" onclick="toggleView('chat')">Start Chatting <i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="start-chat-btn" onclick="toggleView('chat')">Start Chatting <i
+                            class="fa-solid fa-arrow-right"></i></button>
 
                     <div class="try-asking-section">
                         <h3>Try Asking About...</h3>
                         <div class="suggestions-grid">
-                            <button class="suggestion-btn"><i class="fa-solid fa-circle-info"></i> What are the requirements for filing an FIR under IPC?</button>
-                            <button class="suggestion-btn"><i class="fa-solid fa-circle-info"></i> How does the Consumer Protection Act protect buyers?</button>
-                            <button class="suggestion-btn"><i class="fa-solid fa-circle-info"></i> What are my rights under the Right to Information Act?</button>
-                            <button class="suggestion-btn"><i class="fa-solid fa-circle-info"></i> Explain the process of property registration in India</button>
+                            <button class="suggestion-btn"><i class="fa-solid fa-circle-info"></i> What are the
+                                requirements for filing an FIR under IPC?</button>
+                            <button class="suggestion-btn"><i class="fa-solid fa-circle-info"></i> How does the Consumer
+                                Protection Act protect buyers?</button>
+                            <button class="suggestion-btn"><i class="fa-solid fa-circle-info"></i> What are my rights
+                                under the Right to Information Act?</button>
+                            <button class="suggestion-btn"><i class="fa-solid fa-circle-info"></i> Explain the process
+                                of property registration in India</button>
                         </div>
                     </div>
 
-                   
-                    
+
+
                     <div class="footer-links">
                         Free to use • Privacy Policy • Terms of Service
                     </div>
@@ -738,33 +805,35 @@
 
             <div id="chat-view" class="view-container hidden">
                 <div class="chat-scroll-area">
-                    
+
                     <div class="message-row bot">
                         <div class="avatar bot-avatar">
-                            <img src="https://cdn-icons-png.flaticon.com/512/4712/4712035.png" alt="AI"> 
+                            <img src="https://cdn-icons-png.flaticon.com/512/4712/4712035.png" alt="AI">
                         </div>
                         <div class="message-bubble bot-bubble">
-                            <p>Hello! I'm Law Mitra, your AI legal assistant for Indian law. I can help you understand legal concepts, explain procedures, and provide guidance on various legal matters.</p>
+                            <p>Hello! I'm Law Mitra, your AI legal assistant for Indian law. I can help you understand
+                                legal concepts, explain procedures, and provide guidance on various legal matters.</p>
                             <br>
                             <p>How can I assist you today?</p>
                         </div>
                     </div>
 
-                    </div>
+                </div>
                 <div class="input-container">
                     <div class="suggested-chips">
                         <button id="upload-btn"><i class="fa-regular fa-file"></i> Upload Document</button>
                         <button><i class="fa-regular fa-circle-question"></i> Ask Example Question</button>
                         <button><i class="fa-solid fa-book-open"></i> Browse Legal Topics</button>
                     </div>
-                    <input type="file" id="file-input" style="display: none;" accept=".pdf,.docx,.txt,.png,.jpg,.jpeg,.gif,.bmp">
+                    <input type="file" id="file-input" style="display: none;" accept=".pdf,.docx,.txt,.png,.jpg,.jpeg">
                     <div class="input-box">
                         <i class="fa-solid fa-paperclip attach-icon"></i>
                         <input type="text" placeholder="Ask a legal question or describe your situation...">
                         <button class="send-btn"><i class="fa-regular fa-paper-plane"></i></button>
                     </div>
                     <div class="disclaimer">
-                        Law Mitra provides general legal information. For specific legal advice, please consult a qualified attorney.
+                        Law Mitra provides general legal information. For specific legal advice, please consult a
+                        qualified attorney.
                     </div>
                 </div>
             </div>
@@ -777,7 +846,7 @@
         function toggleView(viewName) {
             const welcomeView = document.getElementById('welcome-view');
             const chatView = document.getElementById('chat-view');
-            
+
             if (viewName === 'chat') {
                 welcomeView.classList.add('hidden');
                 chatView.classList.remove('hidden');
@@ -792,7 +861,7 @@
             const chatScrollArea = document.querySelector('.chat-scroll-area');
             const messageRow = document.createElement('div');
             messageRow.className = `message-row ${isUser ? 'user' : 'bot'}`;
-            
+
             const avatar = document.createElement('div');
             avatar.className = 'avatar';
             if (isUser) {
@@ -802,18 +871,19 @@
                 avatar.className += ' bot-avatar';
                 avatar.innerHTML = '<img src="https://cdn-icons-png.flaticon.com/512/4712/4712035.png" alt="AI">';
             }
-            
+
             const messageContent = document.createElement('div');
             messageContent.className = 'message-content-wrapper';
-            
+
             const messageBubble = document.createElement('div');
             messageBubble.className = `message-bubble ${isUser ? 'user-bubble' : 'bot-bubble'}`;
-            messageBubble.innerHTML = message.replace(/\n/g, '<br>');
-            
+            // Use marked.js to parse Markdown to HTML
+            messageBubble.innerHTML = marked.parse(message);
+
             messageContent.appendChild(messageBubble);
             messageRow.appendChild(avatar);
             messageRow.appendChild(messageContent);
-            
+
             chatScrollArea.appendChild(messageRow);
             chatScrollArea.scrollTop = chatScrollArea.scrollHeight;
         }
@@ -828,16 +898,16 @@
                     },
                     body: JSON.stringify({ message: message })
                 });
-                
+
                 const data = await response.json();
-                
+
                 // Handle rate limit and other errors
                 if (response.status === 429) {
                     return data.response || '⏱️ Rate limit exceeded. Please wait a moment and try again.';
                 } else if (response.status >= 400) {
                     return data.response || '⚠️ An error occurred. Please try again.';
                 }
-                
+
                 return data.response;
             } catch (error) {
                 console.error('Error:', error);
@@ -847,14 +917,20 @@
 
         // Add event listeners when DOM is loaded
         document.addEventListener('DOMContentLoaded', () => {
-            
+
+            // Sync backend state on load (Clear history, Keep document)
+            fetch('/newchat', { method: 'POST' })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Session synced:', data.message);
+                })
+                .catch(err => console.error('Session sync error:', err));
+
             // Sidebar "New Conversation" button
             const newChatBtn = document.querySelector('.new-chat-btn');
-            if(newChatBtn) {
+            if (newChatBtn) {
                 newChatBtn.addEventListener('click', () => {
                     toggleView('welcome');
-                    // Reset active states
-                    document.querySelectorAll('.history-item').forEach(i => i.classList.remove('active'));
                     // Clear chat history (keep greeting)
                     const chatScrollArea = document.querySelector('.chat-scroll-area');
                     if (chatScrollArea) {
@@ -864,21 +940,10 @@
                             chatScrollArea.appendChild(greeting);
                         }
                     }
+                    // Notify backend
+                    fetch('/newchat', { method: 'POST' });
                 });
             }
-
-            // Sidebar History Items (clicking one should show chat)
-            const historyItems = document.querySelectorAll('.history-item');
-            historyItems.forEach(item => {
-                item.addEventListener('click', () => {
-                    // Remove active class from all
-                    historyItems.forEach(i => i.classList.remove('active'));
-                    // Add active class to clicked
-                    item.classList.add('active');
-                    // Show chat view
-                    toggleView('chat');
-                });
-            });
 
             // Handle "Try Asking" buttons on welcome screen
             const suggestionBtns = document.querySelectorAll('.suggestion-btn');
@@ -895,13 +960,13 @@
             // Handle Input Enter Key and Send Button
             const inputField = document.querySelector('.input-box input');
             const sendBtn = document.querySelector('.send-btn');
-            
+
             async function handleSend() {
                 const message = inputField.value.trim();
                 if (message) {
                     addMessage(message, true);
                     inputField.value = '';
-                    
+
                     // Show typing indicator
                     const chatScrollArea = document.querySelector('.chat-scroll-area');
                     const typingDiv = document.createElement('div');
@@ -918,28 +983,27 @@
                     `;
                     chatScrollArea.appendChild(typingDiv);
                     chatScrollArea.scrollTop = chatScrollArea.scrollHeight;
-                    
+
                     const response = await sendMessage(message);
-                    
+
                     // Remove typing indicator
-                    chatScrollArea.removeChild(typingDiv);
-                    
+                    if (typingDiv.parentNode) {
+                        typingDiv.parentNode.removeChild(typingDiv);
+                    }
+
                     addMessage(response, false);
-                    
-                    // Reload history to show new question
-                    loadHistory();
                 }
             }
-            
-            if(inputField) {
+
+            if (inputField) {
                 inputField.addEventListener('keypress', (e) => {
                     if (e.key === 'Enter') {
                         handleSend();
                     }
                 });
             }
-            
-            if(sendBtn) {
+
+            if (sendBtn) {
                 sendBtn.addEventListener('click', handleSend);
             }
 
@@ -947,14 +1011,14 @@
             const uploadBtn = document.getElementById('upload-btn');
             const fileInput = document.getElementById('file-input');
 
-            if(uploadBtn && fileInput) {
+            if (uploadBtn && fileInput) {
                 uploadBtn.addEventListener('click', () => {
                     fileInput.click();
                 });
 
                 fileInput.addEventListener('change', async (e) => {
                     const file = e.target.files[0];
-                    if(file) {
+                    if (file) {
                         const formData = new FormData();
                         formData.append('file', file);
 
@@ -975,14 +1039,14 @@
                                 body: formData
                             });
                             const result = await response.json();
-                            
+
                             // Remove loading message
                             const chatScrollArea = document.querySelector('.chat-scroll-area');
                             if (chatScrollArea && chatScrollArea.lastElementChild) {
                                 chatScrollArea.removeChild(chatScrollArea.lastElementChild);
                             }
-                            
-                            if(response.ok) {
+
+                            if (response.ok) {
                                 // Add success message to chat
                                 const fileName = result.filename || file.name;
                                 const successMessage = `📄 Document "${fileName}" has been uploaded and processed successfully.<br><br>You can now ask questions about this document.`;
@@ -1002,7 +1066,7 @@
                             }
                             addMessage('❌ Upload error: ' + error.message, false);
                         }
-                        
+
                         // Reset file input
                         e.target.value = '';
                     }
@@ -1011,4 +1075,5 @@
         });
     </script>
 </body>
+
 </html>
